@@ -7,6 +7,7 @@ import './myFavourites.css'
 
 function MyFavorite() { 
     const [favRecipe, setFavRecipe] = useState([])
+    const [isFavorite, setIsFavorite] = useState(true)
 
     useEffect(function(){
         async function getFavRecipe(){
@@ -19,19 +20,25 @@ function MyFavorite() {
     
   return (
     <>
-      <h2 className="title-newrecipes"> FAVOURITE </h2>
+      <h2 className='title-newrecipes'> FAVOURITE </h2>
 
-      <div id="recipes-container">
+      <div id='recipes-container'>
         {favRecipe.length > 0 ? (
           favRecipe?.map((recipe, idx) => (
-            <RecipesCard key={idx} recipe={recipe} />
+            <RecipesCard
+              key={idx}
+              recipe={recipe}
+              img={recipe.image}
+              isFav={isFavorite}
+              handleFav={setIsFavorite}
+            />
           ))
         ) : (
           <h1>No favorite recipes yet</h1>
         )}
       </div>
     </>
-  );
+  )
 }
 
 export default MyFavorite;

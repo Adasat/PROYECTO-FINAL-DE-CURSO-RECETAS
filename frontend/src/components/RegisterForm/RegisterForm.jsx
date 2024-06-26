@@ -90,7 +90,6 @@ function RegisterForm() {
           Log in!
         </span>
       </p>
-      <UnregisterForm />
     </div>
   );
 }
